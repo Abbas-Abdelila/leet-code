@@ -1,18 +1,13 @@
 class Solution {
     public int singleNumber(int[] nums) {
-        ArrayList<Integer> numbers = new ArrayList<>();
         
+        
+        int singleNumber = 0;
         for(int i=0; i<nums.length; i++) {
-            if(numbers.contains(nums[i])) {
-                numbers.remove(numbers.indexOf(nums[i]));
-            }
-            else {
-                numbers.add(nums[i]);
-            }
+            // XOR -> if "singleNumber" and number are different it is passed to "singleNumber". 
+            singleNumber ^=nums[i];
         }
         
-        return numbers.get(0).intValue();
-        
-        
+        return singleNumber;
     }
 }
