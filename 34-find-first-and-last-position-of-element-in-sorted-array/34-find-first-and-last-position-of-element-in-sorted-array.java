@@ -1,15 +1,20 @@
 class Solution {
     public int[] searchRange(int[] nums, int target) {
-        
-        
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for(int num : nums) {
-            list.add(num);
+        int array[] = {-1,-1};
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]==target){
+                array[0]=i;
+                break;
+            }
         }
         
-        int[] array = {list.indexOf(target), list.lastIndexOf(target)};
+        for(int i=nums.length-1;i>=0;i--){
+            if(nums[i]==target){
+                array[1]=i;
+                break;
+            }
+        }
         
         return array;
-        
     }
 }
