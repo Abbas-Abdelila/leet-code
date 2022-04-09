@@ -6,15 +6,15 @@ class Solution:
                 frequency[num] += 1
             else:
                 frequency[num] = 1
-           
-        sorted_freq = sorted(frequency.items(), key=lambda x: x[1], reverse=True)
         
-        list = []
-        
-        for i in range(k):
-            list.append(sorted_freq[i][0])
-        
-        return list
+        result = []
+        for key,value in frequency.items():
+            result.append([key,value])
             
+        result.sort(key=lambda x:x[1], reverse=True)
+        
+        return [x[0] for x in result[:k]]
+           
+       
             
         
