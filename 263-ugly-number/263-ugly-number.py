@@ -7,11 +7,9 @@ class Solution(object):
         if(n<=0):
             return False
         
-        while(n%5==0):
-            n=n/5
-        while(n%3==0):
-            n=n/3
-        while(n%2==0):
-            n=n/2
+        for v in (2,3,5):
+            if(n%v==0):
+                while(n%v==0):
+                    n=n//v
         
         return n==1
