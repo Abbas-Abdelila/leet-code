@@ -1,9 +1,5 @@
-class Solution(object):
-    def calPoints(self, ops):
-        """
-        :type ops: List[str]
-        :rtype: int
-        """
+class Solution:
+    def calPoints(self, ops: List[str]) -> int:
         stack = []
         
         for i in ops:
@@ -20,4 +16,3 @@ class Solution(object):
                 stack.append(int(i))
                 
         return sum(stack)
-        
