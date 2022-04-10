@@ -5,18 +5,15 @@ class Solution(object):
         :rtype: bool
         """
         s = str(x)
-        l = 0
-        r = len(s) - 1
-        isPalindrome = True
-        while l < r:
-            if s[l] != s[r]:
-                isPalindrome = False
+        left = 0
+        right = len(s)-1
+        isPalindrome=True
+        
+        while(left<right):
+            if(s[left]!=s[right]):
+                isPalindrome=False
                 break
-            l += 1
-            r -= 1
+            left += 1
+            right -= 1
+        
         return isPalindrome
-        
-            
-            
-                
-        
