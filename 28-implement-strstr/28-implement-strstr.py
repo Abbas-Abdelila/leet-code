@@ -5,10 +5,18 @@ class Solution(object):
         :type needle: str
         :rtype: int
         """
+        # sliding window
+        
         if(needle==""):
             return 0
         
-        if (needle in haystack):
-            return haystack.index(needle)
-        return -1      
+        left = 0
+        window_size = len(needle)
         
+        while(left+window_size <= len(haystack)):
+            if(haystack[left:left+window_size] == needle):
+                return left
+            
+            left += 1
+        
+        return -1
