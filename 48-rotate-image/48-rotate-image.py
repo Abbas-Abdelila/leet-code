@@ -1,17 +1,21 @@
-class Solution(object):
-    def rotate(self, matrix):
+class Solution:
+    def rotate(self, matrix: List[List[int]]) -> None:
         """
-        :type matrix: List[List[int]]
-        :rtype: None Do not return anything, modify matrix in-place instead.
+        Do not return anything, modify matrix in-place instead.
         """
-        if len(matrix) == 1:
-            return matrix
+        # reverse it and transpose it
+        R = len(matrix)
+        C = len(matrix[0])
         
         matrix.reverse()
         
-        for i in range(len(matrix)):
-            for j in range(i):
+        for i in range(R):
+            for j in range(i): # the lower triangle since we are swapping both
                 matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+            
+        
+        
+
         
         
         
