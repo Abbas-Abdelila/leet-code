@@ -1,25 +1,23 @@
-class Solution(object):
-    def sortColors(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: None Do not return anything, modify nums in-place instead.
-        """
-        N = len(nums)
-        counter = [0,0,0]
-        for num in nums:
-            counter[num] += 1
+class Solution {
+    public void sortColors(int[] nums) {
+        int n2 = -1;
+        int n1 = -1;
+        int n0 = -1;
         
-        cumulative = []
-        total = 0
-        for count in counter:
-            total += count
-            cumulative.append(total)
+        for(int i = 0; i<nums.length; ++i) {
+            if (nums[i] == 0) {
+                nums[++n2] = 2;
+                nums[++n1] = 1;
+                nums[++n0] = 0;
+            }
+            else if (nums[i] == 1) {
+                nums[++n2] = 2;
+                nums[++n1] = 1;
+            }
+            else if (nums[i] == 2) {
+                nums[++n2] = 2;
+            }
+        }
         
-        output = [0]*N
-        for i in range(N-1, -1, -1):
-            cumulative[nums[i]] -= 1
-            output[cumulative[nums[i]]] = nums[i]
-        
-        for i in range(N):
-            nums[i] = output[i]
-            
+    }
+}
