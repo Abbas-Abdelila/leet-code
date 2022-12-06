@@ -1,42 +1,26 @@
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
 class Solution:
     def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        if head == None or head.next == None:
+        if not head:
             return head
-        
-        odd_head = ListNode(10**20)
-        even_head = ListNode(10**20)
-        curr = head
-        i = 1
-        while curr:
-            if (i%2==1):
-                if odd_head.val == 10**20:
-                    new_odd_head = ListNode(curr.val)
-                    odd_head = new_odd_head
-                    tail_odd = new_odd_head
 
-                else:
-                    new_node = ListNode(curr.val)
-                    tail_odd.next = new_node
-                    tail_odd = tail_odd.next
-            else:
-                if even_head.val == 10**20:
-                    new_even_head = ListNode(curr.val)
-                    even_head = new_even_head
-                    tail_even = new_even_head
-                else:
-                    new_node = ListNode(curr.val)
-                    tail_even.next = new_node
-                    tail_even = tail_even.next
-            
-            i += 1
-            curr = curr.next
-        
-        tail_odd.next = even_head
+        odd_head = head
+        even_head = head.next
+        odd_tail = odd_head
+        even_tail = even_head
+
+        while even_tail and even_tail.next:
+            # Link the tail of the odd list to the head of the even list
+            odd_tail.next = even_tail.next
+            # Advance the tail of the odd list
+            odd_tail = odd_tail.next
+            # Link the tail of the even list to the head of the odd list
+            even_tail.next = odd_tail.next
+            # Advance the tail of the even list
+            even_tail = even_tail.next
+
+        # Link the tail of the odd list to the head of the even list
+        odd_tail.next = even_head
+
+        # Return the head of the odd list, since it is the new head of the reordered list
         return odd_head
-        
         
