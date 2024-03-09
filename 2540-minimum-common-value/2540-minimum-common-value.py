@@ -1,7 +1,8 @@
 class Solution:
     def getCommon(self, nums1: List[int], nums2: List[int]) -> int:
-
-        common = set(nums1) & set(nums2)
-        if len(common) == 0:
-            return -1
-        return min(common)
+        nums = set(nums1)
+        for num in nums2:
+            if num in nums:
+                return num
+        
+        return -1 
